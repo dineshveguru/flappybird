@@ -86,19 +86,10 @@ class Bird:
 
 
 class Pipe():
-    """
-    represents a pipe object
-    """
     GAP = 200
     VEL = 5
 
     def __init__(self, x):
-        """
-        initialize pipe object
-        :param x: int
-        :param y: int
-        :return" None
-        """
         self.x = x
         self.height = 0
 
@@ -123,30 +114,14 @@ class Pipe():
         self.bottom = self.height + self.GAP
 
     def move(self):
-        """
-        move pipe based on vel
-        :return: None
-        """
         self.x -= self.VEL
 
     def draw(self, win):
-        """
-        draw both the top and bottom of the pipe
-        :param win: pygame window/surface
-        :return: None
-        """
-        # draw top
         win.blit(self.PIPE_TOP, (self.x, self.top))
-        # draw bottom
         win.blit(self.PIPE_BOTTOM, (self.x, self.bottom))
 
 
     def collide(self, bird, win):
-        """
-        returns if a point is colliding with the pipe
-        :param bird: Bird object
-        :return: Bool
-        """
         bird_mask = bird.get_mask()
         top_mask = pygame.mask.from_surface(self.PIPE_TOP)
         bottom_mask = pygame.mask.from_surface(self.PIPE_BOTTOM)
@@ -211,7 +186,6 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
-        # bird.move()
         for pipe in pipes:
             if pipe.collide(bird, win):
                 pass
